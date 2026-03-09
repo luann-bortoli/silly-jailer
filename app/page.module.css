@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    .terminalContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        min-height: 60%;
+        width: 50%;
+
+        border: solid 1px var(--primary);
+        border-radius: 2px;
+        padding: 16px;
+
+        .inputContainer {
+            width: 100%;
+
+            .requestInput {
+                width: 100%;
+
+                border: none;
+                outline: none;
+                background-color: transparent;
+                color: var(--primary);
+                resize: none;
+                height: fit-content;
+                field-sizing: content;
+            }
+        }
+
+    }
+}
