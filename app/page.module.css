@@ -11,6 +11,7 @@
         display: flex;
         justify-content: space-between;
         background-color: var(--primary);
+        padding: 4px 8px;
 
         width: 50%;
 
@@ -90,7 +91,7 @@
             width: 100%;
 
             border-bottom: solid 1px var(--primary);
-            padding: 0 0 16px 0;
+            padding: 0 0 22px 0;
             margin: 8px 0 32px 0;
 
             p{
