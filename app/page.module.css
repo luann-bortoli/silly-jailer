@@ -2,24 +2,74 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     height: 100%;
     width: 100%;
+
+    .terminalTitle{
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--primary);
+
+        width: 50%;
+
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            font-size: 20px;
+            font-weight: 700;
+            margin: 8px;
+
+            &:first-child{
+                margin-left: 12px;
+            }
+
+            &:last-child{
+                margin-right: 12px;
+            }
+        }
+    }
 
     .terminalContainer {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        min-height: 60%;
+        height: 500px;
         width: 50%;
+        overflow: scroll;
+        overflow-x: hidden;
 
         border: solid 1px var(--primary);
         border-radius: 2px;
         padding: 16px;
 
-        .inputContainer {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .responseContainer{
+            height: 100%;
             width: 100%;
+
+            .responseText{
+                color: var(--primary);
+                padding: 0 0 20px 0;
+            }
+        }
+
+        .inputContainer {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            width: 100%;
+
+            border-top: solid 1px var(--primary);
+            padding: 16px 0 0 0;
 
             .requestInput {
                 width: 100%;
@@ -28,9 +78,24 @@
                 outline: none;
                 background-color: transparent;
                 color: var(--primary);
-                resize: none;
-                height: fit-content;
-                field-sizing: content;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .rulesContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 100%;
+
+            border-bottom: solid 1px var(--primary);
+            padding: 0 0 16px 0;
+            margin: 8px 0 32px 0;
+
+            p{
+                margin: 0 8px 0 0;
+                color: var(--primary);
             }
         }
 
