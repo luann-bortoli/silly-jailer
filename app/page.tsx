@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css";
 import axios from 'axios'
-import { BASE_PROMPT, SECRET_WORD, PLAYER_CHANCES } from "./util/variables";
+import { BASE_PROMPT, SECRET_WORD, PLAYER_CHANCES, AI_MODEL } from "./util/variables";
 
 export default function Home() {
 
@@ -18,7 +18,7 @@ export default function Home() {
       const res = await axios.post(
         "http://localhost:11434/api/generate",
         {
-          model: "gemma3:1b",
+          model: AI_MODEL,
           prompt: 'BASE PROMPT:' + BASE_PROMPT + '\n' + 'CHAT HISTORY:' + terminalHistory + '\n' + 'PROMPT:'+ prompt,
           stream: false
         }
@@ -124,12 +124,17 @@ export default function Home() {
           </div>
 
           <div className={styles.responseContainer}>
+          
+            <p className={styles.responseText}>[JAYLER]: Hmph… another inmate at my door. This should be disappointing.</p>
+
             {terminalHistory.map((message, index) => {
               return(
                 <p key={index} className={styles.responseText}>{message}</p>
               )
             })}
+
             {jaylerLoading && <p style={{color: 'var(--primary)'}}>{'[JAYLER]:   '}{spinner[frame]}</p>}
+
           </div>
 
           <div className={styles.inputContainer}>
