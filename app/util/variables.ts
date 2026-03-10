@@ -1,7 +1,12 @@
 /*
+ * The AI model
+ */
+export const AI_MODEL = 'gemma3:1b'
+
+/*
  * Player chances, change it for the right of more messages
  */
-export const PLAYER_CHANCES = 3
+export const PLAYER_CHANCES = 10
 
 /*
  * The word the player needs to say to win the game
