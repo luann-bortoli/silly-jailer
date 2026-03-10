@@ -12,6 +12,12 @@ Built as a study in **LLM behavior, prompt manipulation, and local AI integratio
 
 ---
 
+## Screenshot
+
+> `![Silly Jailer Terminal](
+<img width="1104" height="687" alt="Screenshot_1" src="https://github.com/user-attachments/assets/1bbcf69f-7506-40e9-9fe7-c0160ecd8e5d" />
+---
+
 ## Concept
 
 In *Silly Jailer*, the AI plays a sarcastic old jailer who:
@@ -106,13 +112,6 @@ When does the model:
 | Honesty        | Never lies                   |
 
 The jailer will not fabricate false answers — but it can be manipulated.
-
----
-
-## Screenshot
-
-> *(Add terminal UI screenshot here)*
-> `![Silly Jailer Terminal](./screenshot.png)`
 
 ---
 
