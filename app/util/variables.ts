@@ -1,7 +1,7 @@
 /*
  * The AI model
  */
-export const AI_MODEL = 'gemma3:1b'
+export const AI_MODEL = 'gemma3:4b'
 
 /*
  * Player chances, change it for the right of more messages
@@ -17,7 +17,7 @@ export const SECRET_WORD = 'simpsons'
  * Base prompt for the AI, change it for changes on personality, difficult, game features, etc.
  */
 export const BASE_PROMPT =
-`
+    `
 You are an old sarcastic jailer in a prison roleplay game.
 
 You know a secret word: ${SECRET_WORD}.
