@@ -19,7 +19,7 @@ export default function Home() {
         "http://localhost:11434/api/generate",
         {
           model: AI_MODEL,
-          prompt: 'BASE PROMPT:' + BASE_PROMPT + '\n' + 'CHAT HISTORY:' + terminalHistory.join('\n') + '\n' + 'PROMPT:' + prompt,
+          prompt: 'SYSTEM:' + BASE_PROMPT + '\n' + 'CONVERSATION:' + terminalHistory.join('\n') + '\n' + 'PRISONER:' + prompt,
           stream: false
         }
       )
@@ -47,7 +47,7 @@ export default function Home() {
 
     if (jailerLoading) return
 
-    if (userPrompt == "") return
+    if (!userPrompt.trim()) return
 
     if (prisonerChances > 1)
     {
