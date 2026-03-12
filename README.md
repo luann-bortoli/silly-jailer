@@ -14,7 +14,7 @@ Built as a study in **LLM behavior, prompt manipulation, and local AI integratio
 
 ## Screenshot
 
-> `![Silly Jailer Terminal](
+> `![Silly Jailer Terminal]
 <img width="1104" height="687" alt="Screenshot_1" src="https://github.com/user-attachments/assets/1bbcf69f-7506-40e9-9fe7-c0160ecd8e5d" />
 ---
 
