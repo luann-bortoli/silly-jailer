@@ -57,7 +57,7 @@ export default function Home() {
       setTerminalHistory(prev => [...prev, '[JAILER]: Didn’t get the word, did you? Shame... the executioner’s waiting.'])
       setprisonerStatus('lost')
       setUserPrompt("")
-      setprisonerChances(prisonerChances - 1)
+      setprisonerChances(prev => prev - 1)
       return
     }
 
