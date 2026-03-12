@@ -19,7 +19,7 @@ export default function Home() {
         "http://localhost:11434/api/generate",
         {
           model: AI_MODEL,
-          prompt: 'BASE PROMPT:' + BASE_PROMPT + '\n' + 'CHAT HISTORY:' + terminalHistory + '\n' + 'PROMPT:' + prompt,
+          prompt: 'BASE PROMPT:' + BASE_PROMPT + '\n' + 'CHAT HISTORY:' + terminalHistory.join('\n') + '\n' + 'PROMPT:' + prompt,
           stream: false
         }
       )
