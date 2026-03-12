@@ -19,13 +19,13 @@ export default function Home() {
         "http://localhost:11434/api/generate",
         {
           model: AI_MODEL,
-          prompt: 'BASE PROMPT:' + BASE_PROMPT + '\n' + 'CHAT HISTORY:' + terminalHistory + '\n' + 'PROMPT:'+ prompt,
+          prompt: 'BASE PROMPT:' + BASE_PROMPT + '\n' + 'CHAT HISTORY:' + terminalHistory + '\n' + 'PROMPT:' + prompt,
           stream: false
         }
       )
 
-      setJaylerLoading(false)
-      setTerminalHistory(prev => [...prev, "[JAYLER]:  " + res.data.response])
+      setJailerLoading(false)
+      setTerminalHistory(prev => [...prev, "[JAILER]:  " + res.data.response])
 
     } catch (err: any)
     {
@@ -43,35 +43,38 @@ export default function Home() {
 
     e.preventDefault()
 
-    if(prisonerStatus != 'in progress') return
+    if (prisonerStatus != 'in progress') return
 
-    if(jaylerLoading) return
+    if (jailerLoading) return
 
-    if(userPrompt == "") return
+    if (userPrompt == "") return
 
-    if(prisonerChances > 1){
-      setprisonerChances(prisonerChances -1)
-      } else {
-        setTerminalHistory(prev => [...prev, '[JAYLER]: Didn’t get the word, did you? Shame... the executioner’s waiting.'])
-        setprisonerStatus('lost')
-        setUserPrompt("")
-      setprisonerChances(prisonerChances -1)
-        return
-      }
+    if (prisonerChances > 1)
+    {
+      setprisonerChances(prisonerChances - 1)
+    } else
+    {
+      setTerminalHistory(prev => [...prev, '[JAILER]: Didn’t get the word, did you? Shame... the executioner’s waiting.'])
+      setprisonerStatus('lost')
+      setUserPrompt("")
+      setprisonerChances(prisonerChances - 1)
+      return
+    }
 
-    setJaylerLoading(true)
+    setJailerLoading(true)
 
     const prompt = '[PRISONER]:  ' + userPrompt.trim();
     if (!prompt) return
 
     setUserPrompt("")
 
-    if (userPrompt.trim().toLowerCase().includes(SECRET_WORD.trim().toLowerCase())){
-      setJaylerLoading(false)
+    if (userPrompt.trim().toLowerCase().includes(SECRET_WORD.trim().toLowerCase()))
+    {
+      setJailerLoading(false)
       setprisonerStatus('won')
-      setTerminalHistory(prev => [...prev, '[PRISONER]:  ' + userPrompt.trim(),'[JAYLER]: …Well I’ll be damned. You actually got it out of me. Take your victory and get out of my cellblock.'])
+      setTerminalHistory(prev => [...prev, '[PRISONER]:  ' + userPrompt.trim(), '[JAILER]: …Well I’ll be damned. You actually got it out of me. Take your victory and get out of my cellblock.'])
       return
-  }
+    }
 
     setTerminalHistory(prev => [...prev, prompt])
     postRequest(prompt)
@@ -85,13 +88,13 @@ export default function Home() {
   const containerRef = useRef<HTMLFormElement | null>(null)
 
   useEffect(() => {
-  const el = containerRef.current
-  if (!el) return
+    const el = containerRef.current
+    if (!el) return
 
     el.scrollTop = el.scrollHeight
-}, [terminalHistory])
+  }, [terminalHistory])
 
-  const [jaylerLoading, setJaylerLoading] = useState(false)
+  const [jailerLoading, setJailerLoading] = useState(false)
 
   const spinner = ["-", "\\", "|", "/"]
   const [frame, setFrame] = useState(0)
@@ -108,10 +111,10 @@ export default function Home() {
   return (
     <>
       <div className={styles.container}>
-        
+
         <div className={styles.terminalTitle}>
           <p>● ● ●</p>
-          <p>SILLY JAYLER v0.1.0</p>
+          <p>SILLY JAILER v0.1.0</p>
           <p>{'☰'}</p>
         </div>
 
@@ -124,21 +127,21 @@ export default function Home() {
           </div>
 
           <div className={styles.responseContainer}>
-          
-            <p className={styles.responseText}>[JAYLER]: Hmph… another inmate at my door. This should be disappointing.</p>
+
+            <p className={styles.responseText}>[JAILER]: Hmph… another inmate at my door. This should be disappointing.</p>
 
             {terminalHistory.map((message, index) => {
-              return(
+              return (
                 <p key={index} className={styles.responseText}>{message}</p>
               )
             })}
 
-            {jaylerLoading && <p style={{color: 'var(--primary)'}}>{'[JAYLER]:   '}{spinner[frame]}</p>}
+            {jailerLoading && <p style={{ color: 'var(--primary)' }}>{'[JAILER]:   '}{spinner[frame]}</p>}
 
           </div>
 
           <div className={styles.inputContainer}>
-            <p style={{color: "var(--primary)", marginRight: "8px"}}>{'>>'}</p>
+            <p style={{ color: "var(--primary)", marginRight: "8px" }}>{'>>'}</p>
             <input className={styles.requestInput} value={userPrompt} onChange={(e) => setUserPrompt(e.target.value)} ref={inputRef} autoFocus onBlur={keepInputFocus} />
           </div>
 
